@@ -1,0 +1,12 @@
+# Secrets
+src/config/settings.json
+
+# Binaries/Logs
+*.exe
+*.zip
+logs/
+__pycache__/
+
+# Environment
+venv/
+.env
