@@ -37,4 +37,4 @@ start "IBKR Bridge" cmd /k "python src/main_ibkr.py"
 
 :: 3. Start Tunnel
 echo [3/4] Starting Tunnel...
-cmd /k "lt --port 5001"
+cmd /k "lt --port 5001 --subdomain bostonrobbie-ibkr"

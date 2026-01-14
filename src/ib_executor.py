@@ -3,6 +3,7 @@ import json
 import os
 import asyncio
 import logging
+from datetime import datetime
 
 # Setup Logger
 logging.basicConfig(level=logging.INFO)
@@ -94,7 +95,55 @@ async def execute_trade_async(data):
     exchange = data.get('exchange', TRADING_CONFIG.get('default_exchange', 'IDEALPRO'))
     currency = data.get('currency', TRADING_CONFIG.get('default_currency', 'USD'))
 
-    contract = get_contract(symbol, sec_type, currency, exchange)
+    contract = await resolve_contract_async(symbol, sec_type, currency, exchange)
+
+async def resolve_contract_async(symbol, sec_type, currency, exchange):
+    """Resolves contract details, specifically for Futures Front Month."""
+    if sec_type == 'FUT':
+        # Create a generic Future object to search
+        # NQ usually trades on CME (Globex)
+        contract = Future(symbol, exchange, currency)
+        
+        try:
+            logger.info(f"Resolving Front Month Future for {symbol}...")
+            details = await ib.reqContractDetailsAsync(contract)
+            if not details:
+                logger.error(f"No contracts found for {symbol}")
+                raise Exception("Contract not found")
+            
+            # Sort by expiration
+            # Filter for non-expired
+            today = datetime.now().strftime('%Y%m%d')
+            valid_contracts = [d.contract for d in details if d.contract.lastTradeDateOrContractMonth and d.contract.lastTradeDateOrContractMonth >= today]
+            
+            if not valid_contracts:
+                 raise Exception("No valid future contracts found")
+                 
+            # Sort by date
+            valid_contracts.sort(key=lambda c: c.lastTradeDateOrContractMonth)
+            
+            front_month = valid_contracts[0]
+            logger.info(f"Resolved {symbol} -> {front_month.localSymbol} (Exp: {front_month.lastTradeDateOrContractMonth})")
+            return front_month
+            
+        except Exception as e:
+            logger.error(f"Failed to resolve future: {e}")
+            # Fallback to simple construction if resolution fails
+            return Future(symbol, '202412', exchange) # Dangerous fallback, better to fail?
+            
+    else:
+        # Standard synchronous creation for valid types
+        if sec_type == 'CASH':
+            if len(symbol) == 6:
+                return Forex(symbol[:3], symbol[3:])
+            return Forex(symbol)
+        elif sec_type == 'STK':
+            return Stock(symbol, exchange, currency)
+        elif sec_type == 'CRYPTO':
+            return Crypto(symbol, exchange, currency)
+        else:
+            return Contract(symbol=symbol, secType=sec_type, exchange=exchange, currency=currency)
+
     
     # --- ORDER LOGIC ---
     sl = float(data.get('sl', 0.0))
