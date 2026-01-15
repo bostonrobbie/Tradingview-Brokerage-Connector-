@@ -1,11 +1,17 @@
 @echo off
-title IBKR & MT5 Ultimate Launcher
+title IBKR and MT5 Ultimate Launcher
 color 0B
 cd /d "%~dp0"
 
 echo ===================================================
 echo   Starting IBKR Ultimate Trading System
 echo ===================================================
+
+echo [0/6] Cleaning up old processes...
+taskkill /F /IM python.exe /T >nul 2>&1
+taskkill /F /IM node.exe /T >nul 2>&1
+taskkill /F /IM streamlit.exe /T >nul 2>&1
+timeout /t 2 >nul
 
 echo [Auto-Backup] Saving your latest changes to GitHub...
 git add .

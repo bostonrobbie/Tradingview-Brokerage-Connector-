@@ -3,7 +3,7 @@ set "SCRIPT_PATH=%~dp0launch_everything.bat"
 set "ICON_PATH=%~dp0src\icon.ico" 
 :: Fallback to no icon if missing
 set "DESKTOP=%USERPROFILE%\Desktop"
-set "SHORTCUT_PATH=%DESKTOP%\Start IBKR Bridge.lnk"
+set "SHORTCUT_PATH=%DESKTOP%\Start Bridges (IBKR + MT5).lnk"
 
 echo Creating Desktop Shortcut...
 echo Target: %SCRIPT_PATH%

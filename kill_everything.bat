@@ -18,4 +18,9 @@ taskkill /F /IM streamlit.exe /T
 
 echo.
 echo ALL STOPPED.
+echo.
+echo ==================================================
+echo   Would you like to update/repair the Desktop Icon?
+echo ==================================================
 pause
+call "%~dp0create_desktop_icon.bat"
