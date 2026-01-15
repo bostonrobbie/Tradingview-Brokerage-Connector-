@@ -50,6 +50,42 @@ with col3:
 
 st.divider()
 
+# --- CONTROL CENTER ---
+st.subheader("🎛️ Control Center")
+c1, c2, c3 = st.columns(3)
+
+with c1:
+    if st.button("🔔 Send Test Trade (Paper)"):
+        try:
+            payload = {
+                "secret": "fd70ac19-6154-4354-a8ba-b345b511ed93",
+                "action": "BUY",
+                "symbol": "MNQ",
+                "secType": "FUT",
+                "exchange": "GLOBEX",
+                "currency": "USD",
+                "volume": 1
+            }
+            requests.post("http://127.0.0.1:5001/webhook", json=payload)
+            st.toast("Test Signal Sent!", icon="🚀")
+        except Exception as e:
+            st.error(f"Failed: {e}")
+
+with c2:
+    if st.button("🔴 PANIC: CLOSE ALL MNQ"):
+        try:
+            payload = {
+                "secret": "fd70ac19-6154-4354-a8ba-b345b511ed93",
+                "action": "CLOSE",
+                "symbol": "MNQ"
+            }
+            requests.post("http://127.0.0.1:5001/webhook", json=payload)
+            st.toast("CLOSE SIGNAL SENT!", icon="🚨")
+        except Exception as e:
+            st.error(f"Failed: {e}")
+
+st.divider()
+
 if online:
     st.subheader("📜 Live Logs")
     logs = data.get("logs", [])

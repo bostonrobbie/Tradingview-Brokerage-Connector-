@@ -3,3 +3,4 @@ ib_async
 colorama
 streamlit
 pandas
+requests

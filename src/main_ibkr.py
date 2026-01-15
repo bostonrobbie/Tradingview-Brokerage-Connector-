@@ -23,14 +23,30 @@ def main():
     # We will use the Webhook listener's Flask runner which is sync, 
     # and use ib.run() to invoke async commands.
     
-    try:
-        # Attempt initial connection
-        print("[INFO] Attempting initial connection to IBKR (7497)...")
-        try:
-            ib_executor.ib.run(ib_executor.connect_ib())
-        except Exception as e:
-            print(f"[WARN] Initial connection failed: {e}")
+    # Start Reconnection Thread (Background)
+    # This enables "Launch First, Login Later" workflow
+    import threading
+    import time
 
+    def connection_monitor():
+        while True:
+            if not ib_executor.ib.isConnected():
+                print("[MONITOR] IBKR Disconnected. Retrying in 5 seconds...")
+                try:
+                    # Async call inside sync thread requires ib.run logic
+                    ib_executor.ib.run(ib_executor.connect_ib())
+                except Exception as e:
+                    print(f"[MONITOR] Connection attempt failed: {e}")
+            else:
+                # If connected, just sleep longer
+                pass
+            
+            time.sleep(10)
+
+    monitor_thread = threading.Thread(target=connection_monitor, daemon=True)
+    monitor_thread.start()
+
+    try:
         webhook_listener.start_server()
     except KeyboardInterrupt:
         print("\n[INFO] Shutting down...")

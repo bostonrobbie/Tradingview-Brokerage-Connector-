@@ -31,26 +31,41 @@ async def connect_ib():
     primary_port = int(IBKR_CONFIG.get('port', 7497))
     # If config is 7497 (Paper), backup is 7496 (Live), and vice versa.
     backup_port = 7496 if primary_port == 7497 else 7497
-    client_id = int(IBKR_CONFIG.get('client_id', 1))
-
-    if ib.isConnected():
-        return True
-
-    logger.info(f"Connecting to IBKR {host}:{primary_port} ClientID:{client_id}...")
-    try:
-        await ib.connectAsync(host, primary_port, clientId=client_id)
-        logger.info(f"Connected to Interactive Brokers on Port {primary_port}!")
-        return True
-    except Exception as e:
-        logger.warning(f"Connection to Port {primary_port} failed. Trying Backup Port {backup_port}...")
+    import random
+    
+    # Try different Client IDs to avoid collisions (Zombie processes)
+    base_client_id = int(IBKR_CONFIG.get('client_id', 1))
+    
+    for attempt in range(3):
+        # First attempt uses config ID, subsequent ones use random
+        current_client_id = base_client_id if attempt == 0 else random.randint(1000, 9999)
         
+        logger.info(f"Connecting to IBKR {host}:{primary_port} ClientID:{current_client_id}...")
         try:
-            await ib.connectAsync(host, backup_port, clientId=client_id)
-            logger.info(f"Connected to Interactive Brokers on Port {backup_port}!")
+            await ib.connectAsync(host, primary_port, clientId=current_client_id)
+            logger.info(f"Connected to Interactive Brokers on Port {primary_port} (ID: {current_client_id})!")
             return True
-        except Exception as e2:
-            logger.error(f"Connection failed on both ports. Please check TWS API Settings.")
-            return False
+        except Exception as e:
+            logger.warning(f"Port {primary_port}/ID {current_client_id} failed: {e}")
+            ib.disconnect() # Force cleanup of partial state
+            
+            # If Connection Refused, try Backup Port
+            if "ConnectionRefused" in str(e) or "refused" in str(e).lower():
+                logger.warning(f"Primary port refused. Trying Backup Port {backup_port}...")
+                try:
+                    await ib.connectAsync(host, backup_port, clientId=current_client_id)
+                    logger.info(f"Connected to Interactive Brokers on Port {backup_port} (ID: {current_client_id})!")
+                    return True
+                except Exception as e2:
+                     logger.warning(f"Backup port failed: {e2}")
+                     ib.disconnect()
+            else:
+                 # If likely Client ID error (Peer closed), just loop to try new ID
+                 logger.warning("Likely Client ID conflict. Retrying with new ID...")
+                 await asyncio.sleep(1)
+                 
+    logger.error("All connection attempts failed.")
+    return False
 
 def get_contract(symbol, sec_type, currency, exchange):
     """Creates a contract object."""

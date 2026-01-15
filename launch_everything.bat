@@ -7,6 +7,11 @@ echo ===================================================
 echo   Starting IBKR Ultimate Trading System
 echo ===================================================
 
+echo [Auto-Backup] Saving your latest changes to GitHub...
+git add .
+git commit -m "Auto-Backup on Launch"
+git push origin main
+
 :: 1. Search for TWS
 echo [1/4] Looking for Trader Workstation (TWS)...
 
