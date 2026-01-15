@@ -437,3 +437,112 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2026-01-15 10:01:30,886 [INFO] 127.0.0.1 - - [15/Jan/2026 10:01:30] "GET /status HTTP/1.1" 200 -
 2026-01-15 10:01:30,887 [INFO] 127.0.0.1 - - [15/Jan/2026 10:01:30] "GET /status HTTP/1.1" 200 -
 2026-01-15 10:01:30,915 [INFO] 127.0.0.1 - - [15/Jan/2026 10:01:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:51,211 [INFO] Starting IBKR Bridge Server on 0.0.0.0:5001
+2026-01-15 10:07:51,212 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:1...
+2026-01-15 10:07:51,212 [INFO] Connecting to 127.0.0.1:7497 with clientId 1...
+2026-01-15 10:07:51,258 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.21:5001
+2026-01-15 10:07:51,258 [INFO] [33mPress CTRL+C to quit[0m
+2026-01-15 10:07:51,268 [INFO]  * Restarting with watchdog (windowsapi)
+2026-01-15 10:07:51,910 [INFO] Starting IBKR Bridge Server on 0.0.0.0:5001
+2026-01-15 10:07:51,912 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:1...
+2026-01-15 10:07:51,914 [INFO] Connecting to 127.0.0.1:7497 with clientId 1...
+2026-01-15 10:07:51,970 [WARNING]  * Debugger is active!
+2026-01-15 10:07:51,975 [INFO]  * Debugger PIN: 852-175-487
+2026-01-15 10:07:52,767 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:52] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:52,767 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:52] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:52,767 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:52] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:52,768 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:52] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:53,059 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:53] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:53,252 [INFO] Disconnecting
+2026-01-15 10:07:53,252 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:53,252 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:53,253 [WARNING] Port 7497/ID 1 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:53,253 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:07:53,253 [INFO] Connecting to 127.0.0.1:7496 with clientId 1...
+2026-01-15 10:07:53,952 [INFO] Disconnecting
+2026-01-15 10:07:53,952 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:53,953 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:53,953 [WARNING] Port 7497/ID 1 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:53,953 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:07:53,953 [INFO] Connecting to 127.0.0.1:7496 with clientId 1...
+2026-01-15 10:07:55,304 [INFO] Disconnecting
+2026-01-15 10:07:55,304 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:55,304 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:55,304 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:55,305 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:4677...
+2026-01-15 10:07:55,305 [INFO] Connecting to 127.0.0.1:7497 with clientId 4677...
+2026-01-15 10:07:55,908 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:55] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:55,909 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:55] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:55,909 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:55] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:55,924 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:55] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:56,005 [INFO] Disconnecting
+2026-01-15 10:07:56,005 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:56,006 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:56,006 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:56,006 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:9527...
+2026-01-15 10:07:56,006 [INFO] Connecting to 127.0.0.1:7497 with clientId 9527...
+2026-01-15 10:07:56,106 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:56] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:57,332 [INFO] Disconnecting
+2026-01-15 10:07:57,332 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:57,332 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:57,332 [WARNING] Port 7497/ID 4677 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:57,333 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:07:57,333 [INFO] Connecting to 127.0.0.1:7496 with clientId 4677...
+2026-01-15 10:07:58,046 [INFO] Disconnecting
+2026-01-15 10:07:58,047 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:58,047 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:58,047 [WARNING] Port 7497/ID 9527 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:58,047 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:07:58,047 [INFO] Connecting to 127.0.0.1:7496 with clientId 9527...
+2026-01-15 10:07:59,054 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:59] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:59,054 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:59] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:59,055 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:59] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:59,055 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:59] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:59,164 [INFO] 127.0.0.1 - - [15/Jan/2026 10:07:59] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:07:59,383 [INFO] Disconnecting
+2026-01-15 10:07:59,383 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:07:59,384 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:07:59,384 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:07:59,384 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:9585...
+2026-01-15 10:07:59,384 [INFO] Connecting to 127.0.0.1:7497 with clientId 9585...
+2026-01-15 10:08:00,101 [INFO] Disconnecting
+2026-01-15 10:08:00,102 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:08:00,102 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:08:00,102 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:08:00,102 [INFO] Connecting to IBKR 127.0.0.1:7497 ClientID:4042...
+2026-01-15 10:08:00,102 [INFO] Connecting to 127.0.0.1:7497 with clientId 4042...
+2026-01-15 10:08:01,431 [INFO] Disconnecting
+2026-01-15 10:08:01,431 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:08:01,431 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:08:01,431 [WARNING] Port 7497/ID 9585 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:08:01,431 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:08:01,431 [INFO] Connecting to 127.0.0.1:7496 with clientId 9585...
+2026-01-15 10:08:02,147 [INFO] Disconnecting
+2026-01-15 10:08:02,147 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:08:02,147 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:08:02,147 [WARNING] Port 7497/ID 4042 failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:08:02,147 [WARNING] Primary port refused. Trying Backup Port 7496...
+2026-01-15 10:08:02,148 [INFO] Connecting to 127.0.0.1:7496 with clientId 4042...
+2026-01-15 10:08:02,254 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:02] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:02,255 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:02] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:02,257 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:02] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:02,258 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:02] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:02,260 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:02] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:03,485 [INFO] Disconnecting
+2026-01-15 10:08:03,485 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:08:03,485 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:08:03,485 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:08:03,485 [ERROR] All connection attempts failed.
+2026-01-15 10:08:04,197 [INFO] Disconnecting
+2026-01-15 10:08:04,197 [ERROR] API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2026-01-15 10:08:04,197 [ERROR] Make sure API port on TWS/IBG is open
+2026-01-15 10:08:04,197 [WARNING] Backup port failed: [WinError 1225] The remote computer refused the network connection
+2026-01-15 10:08:04,197 [ERROR] All connection attempts failed.
+2026-01-15 10:08:05,491 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:05] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:05,492 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:05] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:05,493 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:05] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:05,494 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:05] "GET /status HTTP/1.1" 200 -
+2026-01-15 10:08:05,495 [INFO] 127.0.0.1 - - [15/Jan/2026 10:08:05] "GET /status HTTP/1.1" 200 -
