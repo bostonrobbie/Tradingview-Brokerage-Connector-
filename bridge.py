@@ -7,19 +7,22 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 # --- CONFIGURATION ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CONFIG_PATH = os.path.join(BASE_DIR, 'settings.json')
-LOG_PATH = os.path.join(BASE_DIR, 'bridge.log')
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')
 
+# --- LOGGING SETUP ---
 import logging
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_PATH = os.path.join(BASE_DIR, "bridge.log")
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     handlers=[
         logging.FileHandler(LOG_PATH),
-        logging.StreamHandler(sys.stdout)
+        logging.StreamHandler()
     ]
 )
+logger = logging.getLogger("MT5_Bridge")
 
 # --- GLOBAL STATE ---
 BRIDGE_STATE = {
