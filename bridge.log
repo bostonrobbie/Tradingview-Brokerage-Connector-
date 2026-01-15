@@ -25217,3 +25217,46 @@ ConnectionResetError: [WinError 10054] An existing connection was forcibly close
 2026-01-15 15:30:04,287 [INFO]  * Restarting with watchdog (windowsapi)
 2026-01-15 15:30:04,886 [INFO] Disconnecting from 127.0.0.1:7497, 117 B sent in 8 messages, 18.8 kB received in 397 messages, session time 14.8 ks.
 2026-01-15 15:30:04,886 [INFO] Disconnecting
+2026-01-15 15:39:16,283 [INFO] Starting Webhook Listener (Sync)...
+2026-01-15 15:39:16,284 [INFO] Starting IBKR Bridge Server on 0.0.0.0:5001
+2026-01-15 15:39:16,359 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.21:5001
+2026-01-15 15:39:16,359 [INFO] [33mPress CTRL+C to quit[0m
+2026-01-15 15:39:16,377 [INFO]  * Restarting with watchdog (windowsapi)
+2026-01-15 15:39:17,065 [INFO] Starting Webhook Listener (Sync)...
+2026-01-15 15:39:17,065 [INFO] Starting IBKR Bridge Server on 0.0.0.0:5001
+2026-01-15 15:39:17,136 [WARNING]  * Debugger is active!
+2026-01-15 15:39:17,142 [INFO]  * Debugger PIN: 852-175-487
+2026-01-15 15:39:17,298 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:17] "[35m[1mGET /health HTTP/1.1[0m" 503 -
+2026-01-15 15:39:18,259 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:18] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:18,266 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:18] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:18,419 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:18] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:18,552 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:18] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:21,367 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:21] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:21,377 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:21] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:21,488 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:21] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:21,613 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:21] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:24,469 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:24] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:24,471 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:24] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:24,566 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:24] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:24,691 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:24] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:27,568 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:27] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:27,571 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:27] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:27,641 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:27] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:27,766 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:27] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:30,259 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:30,758 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:30,760 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:30,765 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:30,844 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:30] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:33,339 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:33] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:33,838 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:33] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:33,981 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:33] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:33,983 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:33] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:33,989 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:33] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:36,403 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:36] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:36,992 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:36] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:37,158 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:37] "GET /status HTTP/1.1" 200 -
+2026-01-15 15:39:37,160 [INFO] 127.0.0.1 - - [15/Jan/2026 15:39:37] "GET /status HTTP/1.1" 200 -
