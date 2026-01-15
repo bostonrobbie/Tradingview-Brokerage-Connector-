@@ -1,6 +1,7 @@
 @echo off
 title IBKR Ultimate Launcher
 color 0B
+cd /d "%~dp0"
 
 echo ===================================================
 echo   Starting IBKR Ultimate Trading System
@@ -33,8 +34,12 @@ if defined TWS_PATH (
 
 :: 2. Start Bridge
 echo [2/4] Starting Bridge Server...
-start "IBKR Bridge" cmd /k "python src/main_ibkr.py"
+start "IBKR Bridge" cmd /k "python "%~dp0src\main_ibkr.py""
 
 :: 3. Start Tunnel
 echo [3/4] Starting Tunnel...
 cmd /k "lt --port 5001 --subdomain bostonrobbie-ibkr"
+
+:: 4. Start Dashboard
+echo [4/4] Starting Monitor Dashboard...
+start "IBKR Monitor" cmd /k "streamlit run "%~dp0dashboard.py""

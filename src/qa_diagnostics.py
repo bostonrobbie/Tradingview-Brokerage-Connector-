@@ -38,10 +38,44 @@ def check_server_health():
     except Exception as e:
         print(f"[WARN] Server not reachable (Is it running?): {e}")
 
+import socket
+
+def check_tws_ports():
+    print("\n[*] Checking TWS API Ports (Direct Socket Check)...")
+    ports = [7496, 7497]
+    found = False
+    for p in ports:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(2)
+            result = s.connect_ex(('127.0.0.1', p))
+            if result == 0:
+                print(f"[PASS] Port {p} is OPEN. TWS is listening.")
+                found = True
+            else:
+                print(f"[FAIL] Port {p} is CLOSED.")
+            s.close()
+        except Exception as e:
+            print(f"[ERR] Could not check port {p}: {e}")
+    
+    if not found:
+        print("\n[!!!] CRITICAL FAILURE: TWS is NOT answering.")
+        print("      The Bridge code is fine, but TWS has the door locked.")
+        print("      FIX:")
+        print("      1. TWS -> File -> Global Configuration -> API -> Settings.")
+        print("      2. CHECK 'Enable ActiveX and Socket Clients'.")
+        print("      3. UNCHECK 'Read-Only API'.")
+        print("      4. Click 'Apply' and 'OK'.")
+        print("      5. Restart TWS may be required.")
+    else:
+        print("\n[OK] TWS / Gateway is accessible.")
+
 if __name__ == "__main__":
     print("=== IBKR BRIDGE QA DIAGNOSTICS ===")
     check_config()
     check_file("bridge.log", "Log File")
     check_server_health()
+    check_tws_ports()
     print("==================================")
-    print("Run this script while the bridge is running to verify connectivity.")
+    print("Press Enter to close...")
+    input()

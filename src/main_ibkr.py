@@ -24,6 +24,13 @@ def main():
     # and use ib.run() to invoke async commands.
     
     try:
+        # Attempt initial connection
+        print("[INFO] Attempting initial connection to IBKR (7497)...")
+        try:
+            ib_executor.ib.run(ib_executor.connect_ib())
+        except Exception as e:
+            print(f"[WARN] Initial connection failed: {e}")
+
         webhook_listener.start_server()
     except KeyboardInterrupt:
         print("\n[INFO] Shutting down...")

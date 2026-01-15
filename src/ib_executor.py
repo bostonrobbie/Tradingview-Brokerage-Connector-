@@ -26,20 +26,31 @@ IBKR_CONFIG = SETTINGS.get('ibkr', {})
 TRADING_CONFIG = SETTINGS.get('trading', {})
 
 async def connect_ib():
-    """Connects to TWS or IB Gateway."""
+    """Connects to TWS or IB Gateway with Auto-Port Detection."""
     host = IBKR_CONFIG.get('host', '127.0.0.1')
-    port = int(IBKR_CONFIG.get('port', 7497))
+    primary_port = int(IBKR_CONFIG.get('port', 7497))
+    # If config is 7497 (Paper), backup is 7496 (Live), and vice versa.
+    backup_port = 7496 if primary_port == 7497 else 7497
     client_id = int(IBKR_CONFIG.get('client_id', 1))
 
-    if not ib.isConnected():
-        logger.info(f"Connecting to IBKR {host}:{port} ClientID:{client_id}...")
+    if ib.isConnected():
+        return True
+
+    logger.info(f"Connecting to IBKR {host}:{primary_port} ClientID:{client_id}...")
+    try:
+        await ib.connectAsync(host, primary_port, clientId=client_id)
+        logger.info(f"Connected to Interactive Brokers on Port {primary_port}!")
+        return True
+    except Exception as e:
+        logger.warning(f"Connection to Port {primary_port} failed. Trying Backup Port {backup_port}...")
+        
         try:
-            await ib.connectAsync(host, port, clientId=client_id)
-            logger.info("Connected to Interactive Brokers!")
-        except Exception as e:
-            logger.error(f"Connection failed: {e}")
+            await ib.connectAsync(host, backup_port, clientId=client_id)
+            logger.info(f"Connected to Interactive Brokers on Port {backup_port}!")
+            return True
+        except Exception as e2:
+            logger.error(f"Connection failed on both ports. Please check TWS API Settings.")
             return False
-    return True
 
 def get_contract(symbol, sec_type, currency, exchange):
     """Creates a contract object."""
