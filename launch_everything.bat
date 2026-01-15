@@ -65,5 +65,9 @@ echo [6/6] Starting MT5 Tunnel & Dashboard...
 start "MT5 Tunnel" cmd /k "lt --port 5000 --subdomain major-cups-pick"
 start "" "dashboard.html"
 
+:: 7. Start Connection Guard
+echo [7/7] Starting Connection Monitor...
+start "Connection Guard" cmd /k "python "%~dp0src\connection_guard.py""
+
 :: Return to IBKR dir
 cd /d "%~dp0"
