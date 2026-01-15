@@ -111,7 +111,7 @@ async def execute_trade_async(data):
     logger.info(f"Processing: {action} {symbol} (Origin: {raw_symbol})")
     
     # --- CLOSE LOGIC ---
-    if action == 'CLOSE':
+    if action in ['CLOSE', 'EXIT', 'FLATTEN']:
         return await close_positions_async(symbol)
 
     quantity = float(data.get('volume', TRADING_CONFIG.get('default_quantity', 10000))) 
@@ -174,11 +174,16 @@ async def resolve_contract_async(symbol, sec_type, currency, exchange):
     # --- ORDER LOGIC ---
     sl = float(data.get('sl', 0.0))
     tp = float(data.get('tp', 0.0))
+    limit_price = float(data.get('price', 0.0))
+    order_type = data.get('type', 'MARKET').upper()
     
     orders_to_place = []
     
     # Base Order
-    parent = MarketOrder(action, quantity)
+    if order_type == 'LIMIT' and limit_price > 0:
+        parent = LimitOrder(action, quantity, limit_price)
+    else:
+        parent = MarketOrder(action, quantity)
     # Important: If just market, transmit=True. If bracket, transmit=False (wait for children).
     if sl > 0 or tp > 0:
         parent.orderId = ib.client.getReqId()
