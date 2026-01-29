@@ -5,7 +5,7 @@
         "mt5_port": 80
     },
     "security": {
-        "webhook_secret": "",
+        "webhook_secret": "WebhookReceived!",
         "max_webhook_age_seconds": 30
     },
     "trading_hours": {
